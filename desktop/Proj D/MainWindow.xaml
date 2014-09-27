@@ -1,0 +1,51 @@
+﻿<Window x:Class="Proj_D.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Margin="0,0,0,-58">
+        <Label Content="Nome curso" Height="28" HorizontalAlignment="Left" Margin="12,8,0,0" Name="lblNomeCurso" VerticalAlignment="Top" />
+        <TextBox Height="23" Margin="93,12,93,0" Name="txtNomeCurso" VerticalAlignment="Top" />
+
+        <Label Content="Nome aula" Height="28" HorizontalAlignment="Left" Margin="12,37,0,0" Name="lblNomeAula" VerticalAlignment="Top" />
+        <TextBox Height="23" Margin="93,41,93,0" Name="txtNomeAula" VerticalAlignment="Top" />
+
+        <Button Content="Adicionar" Height="82" Margin="0,12,12,0" Name="btnAddFileM3u8" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Click="btnAddFileM3u8_Click" />
+
+        <ListView Name="lsvAulasDownload" Margin="12,158,12,12">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="" Width="10" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ProgressBar Maximum="100" Height="20" Value="{Binding Path=Progresso}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Curso" Width="150" DisplayMemberBinding="{Binding Curso}" />
+                    <GridViewColumn Header="Aula" Width="150" DisplayMemberBinding="{Binding Aula}" />
+                    <GridViewColumn Width="100" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Abrir pasta" Name="btnOpenFolder" Click="btnOpenFolder_Click"></Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="100" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Converter" Name="btnConvert" Click="btnConvert_Click"></Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+
+
+        </ListView>
+        <Label Content="Url arquivo" Height="28" HorizontalAlignment="Left" Margin="12,67,0,0" Name="lblUrlArquivo" VerticalAlignment="Top" />
+        <TextBox Height="23" Margin="93,71,93,0" Name="txtUrlArquivo" VerticalAlignment="Top" />
+        <CheckBox Content="Reprocessar somente converter" Height="16" HorizontalAlignment="Left" Margin="12,137,0,0" Name="chkConvert" VerticalAlignment="Top" />
+        <Label Content="Url m3u8" Height="28" HorizontalAlignment="Left" Margin="12,95,0,0" x:Name="lblUrlM3u8" VerticalAlignment="Top" />
+        <TextBox Height="23" Margin="93,99,93,0" x:Name="txtUrlM3u8" VerticalAlignment="Top" />
+    </Grid>
+</Window>
