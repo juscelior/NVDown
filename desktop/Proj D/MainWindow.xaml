@@ -7,25 +7,51 @@
         Width="525"
         ShowTitleBar="True"
         ShowIconOnTitleBar="True"
-        WindowState="Maximized">
+        WindowState="Maximized"
+        BorderBrush="{DynamicResource AccentColorBrush}"
+        BorderThickness="1">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Icons.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatSlider.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Content="settings" />
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+    <Controls:MetroContentControl>
+    
     <Grid Margin="0,0,0,2">
-        <Label Content="Nome curso" Height="28" HorizontalAlignment="Left" Margin="12,8,0,0" Name="lblNomeCurso" VerticalAlignment="Top" />
-        <TextBox Height="23" Margin="93,12,93,0" Name="txtNomeCurso" VerticalAlignment="Top" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MaxWidth="220px" MinWidth="220px" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <!--left-->
+            <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="50" Height="50" Click="Button_Click">
+                <Rectangle Width="20"
+               Height="20"
+               Fill="{DynamicResource BlackBrush}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+                         Visual="{DynamicResource appbar_video_gallery}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <!--left-->
+            <Border Grid.Column="1" Grid.RowSpan="4" BorderBrush="LightBlue" BorderThickness="1,0,0,0" Background="{x:Null}" />
 
-        <Label Content="Nome aula" Height="28" HorizontalAlignment="Left" Margin="12,37,0,0" Name="lblNomeAula" VerticalAlignment="Top" />
-        <TextBox Height="23" Margin="93,41,93,0" Name="txtNomeAula" VerticalAlignment="Top" />
+        <Label Content="Nome curso" Height="28" HorizontalAlignment="Left" Margin="12,8,0,0" Name="lblNomeCurso" VerticalAlignment="Top" Grid.Column="1" />
+        <TextBox Height="23" Margin="93,12,93,0" Name="txtNomeCurso" VerticalAlignment="Top" Grid.Column="1"/>
 
-        <Button Content="Adicionar" Height="82" Margin="0,12,12,0" Name="btnAddFileM3u8" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Click="btnAddFileM3u8_Click" />
+        <Label Content="Nome aula" Height="28" HorizontalAlignment="Left" Margin="12,37,0,0" Name="lblNomeAula" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox Height="23" Margin="93,41,93,0" Name="txtNomeAula" VerticalAlignment="Top" Grid.Column="1"/>
 
-        <ListView Name="lsvAulasDownload" Margin="12,158,12,10">
+        <Button Content="Adicionar" Height="82" Margin="0,12,12,0" Name="btnAddFileM3u8" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Click="btnAddFileM3u8_Click" Grid.Column="1"/>
+
+        <ListView Name="lsvAulasDownload" Margin="12,158,12,10" Grid.Column="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="" Width="10" >
@@ -56,10 +82,11 @@
 
 
         </ListView>
-        <Label Content="Url arquivo" Height="28" HorizontalAlignment="Left" Margin="12,67,0,0" Name="lblUrlArquivo" VerticalAlignment="Top" />
-        <TextBox Height="23" Margin="93,71,93,0" Name="txtUrlArquivo" VerticalAlignment="Top" />
-        <CheckBox Content="Reprocessar somente converter" Height="16" HorizontalAlignment="Left" Margin="12,137,0,0" Name="chkConvert" VerticalAlignment="Top" />
-        <Label Content="Url m3u8" Height="28" HorizontalAlignment="Left" Margin="12,95,0,0" x:Name="lblUrlM3u8" VerticalAlignment="Top" />
-        <TextBox Height="23" Margin="93,99,93,0" x:Name="txtUrlM3u8" VerticalAlignment="Top" />
+        <Label Content="Url arquivo" Height="28" HorizontalAlignment="Left" Margin="12,67,0,0" Name="lblUrlArquivo" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox Height="23" Margin="93,71,93,0" Name="txtUrlArquivo" VerticalAlignment="Top" Grid.Column="1"/>
+        <CheckBox Content="Reprocessar somente converter" Height="16" HorizontalAlignment="Left" Margin="12,137,0,0" Name="chkConvert" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Url m3u8" Height="28" HorizontalAlignment="Left" Margin="12,95,0,0" x:Name="lblUrlM3u8" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox Height="23" Margin="93,99,93,0" x:Name="txtUrlM3u8" VerticalAlignment="Top" Grid.Column="1"/>
     </Grid>
+    </Controls:MetroContentControl>
 </Controls:MetroWindow>

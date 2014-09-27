@@ -129,5 +129,27 @@ namespace Proj_D
 
             video.Convert();
         }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // This demo runs on .Net 4.0, but we're using the Microsoft.Bcl.Async package so we have async/await support
+            // The package is only used by the demo and not a dependency of the library!
+            MetroDialogOptions.ColorScheme = MahApps.Metro.Controls.Dialogs.MetroDialogColorScheme.Theme;
+
+            var mySettings = new MahApps.Metro.Controls.Dialogs.MetroDialogSettings()
+            {
+                AffirmativeButtonText = "Hi",
+                NegativeButtonText = "Go away!",
+                FirstAuxiliaryButtonText = "Cancel",
+                ColorScheme = MahApps.Metro.Controls.Dialogs.MetroDialogColorScheme.Theme
+            };
+
+            MahApps.Metro.Controls.Dialogs.MessageDialogResult result = await MahApps.Metro.Controls.Dialogs.DialogManager.ShowMessageAsync(this, "Hello!", "Welcome to the world of metro! ",
+                MahApps.Metro.Controls.Dialogs.MessageDialogStyle.AffirmativeAndNegativeAndSingleAuxiliary, mySettings);
+
+            if (result != MahApps.Metro.Controls.Dialogs.MessageDialogResult.FirstAuxiliary)
+                await MahApps.Metro.Controls.Dialogs.DialogManager.ShowMessageAsync(this, "Result", "You said: " + (result == MahApps.Metro.Controls.Dialogs.MessageDialogResult.Affirmative ? mySettings.AffirmativeButtonText : mySettings.NegativeButtonText +
+                    Environment.NewLine + Environment.NewLine + "This dialog will follow the Use Accent setting."));
+        }
     }
 }
