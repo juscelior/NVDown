@@ -18,13 +18,14 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Diagnostics;
 using System.IO;
+using MahApps.Metro.Controls;
 
 namespace Proj_D
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         private ObservableCollection<VideoModel> videos;
 
